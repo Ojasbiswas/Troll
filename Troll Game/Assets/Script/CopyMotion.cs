@@ -7,6 +7,7 @@ public class CopyMotion : MonoBehaviour
     public Transform targetLimb;
     public ConfigurableJoint cj;
     public bool mirror;
+    public bool thigh;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class CopyMotion : MonoBehaviour
     {
         if (!mirror)
         {
-            cj.targetRotation = targetLimb.rotation;
+            cj.targetRotation = targetLimb.localRotation;
         }
         else
         {
