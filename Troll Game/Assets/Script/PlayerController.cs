@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator; 
+
     public float speed;
     public float strafeSpeed;
     public float jumpForce;
@@ -23,28 +25,52 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                animator.SetBool("isWalk", true);
+                animator.SetBool("isRun", true);
                 //Implement Stamina\
                 hips.AddForce(hips.transform.forward * speed * 1.5f);
             }
             else
             {
+                animator.SetBool("isRun", false);
+                animator.SetBool("isWalk", true);
                 hips.AddForce(hips.transform.forward * speed);
             }
+        }
+        else 
+        {
+            animator.SetBool("isWalk", false);
+            animator.SetBool("isRun", false);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             hips.AddForce(-hips.transform.right * strafeSpeed);
+            animator.SetBool("isSideLeft", true);
+        }
+        else
+        {
+            animator.SetBool("isSideLeft", false);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
+            animator.SetBool("isWalk", true);
             hips.AddForce(-hips.transform.forward * speed);
+        }
+        else if(!Input.GetKey(KeyCode.W))
+        {
+            animator.SetBool("isWalk", false);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             hips.AddForce(hips.transform.right * strafeSpeed);
+            animator.SetBool("isSideRight", true);
+        }
+        else
+        {
+            animator.SetBool("isSideRight", false);
         }
 
         if (Input.GetAxis("Jump") > 0)

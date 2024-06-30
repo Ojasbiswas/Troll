@@ -20,7 +20,7 @@ public class CopyMotion : MonoBehaviour
     {
         if (!mirror)
         {
-            cj.targetRotation = targetLimb.localRotation;
+            cj.targetRotation = targetLimb.rotation;
         }
         else
         {
