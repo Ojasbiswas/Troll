@@ -35,8 +35,6 @@ public class Grab : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(isLeftorRight))
         {
-                       
-           Destroy(grabbedObj.GetComponent<FixedJoint>());
            if (isLeftorRight == 0)
            {
                animator.SetBool("isLeftHandUp", false);
@@ -44,7 +42,7 @@ public class Grab : MonoBehaviour
            {
                animator.SetBool("isRightHandUp", false);
            }
-
+           Destroy(grabbedObj.GetComponent<FixedJoint>());
            grabbedObj = null;
         }
     }
